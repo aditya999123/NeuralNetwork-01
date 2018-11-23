@@ -36,10 +36,10 @@ class Data:
 			file_paths = glob.glob(path)
 			print("digit: %d ... files: %d"%(num, len(file_paths)))
 
-			# x = np.zeros((len(file_paths), 784))
-			x = np.zeros((2, 784))
+			x = np.zeros((len(file_paths), 784))
+			# x = np.zeros((2, 784))
 
-			for ind, file in enumerate(file_paths[:2]):
+			for ind, file in enumerate(file_paths):
 				image = plt.imread(file_paths[0])
 				image = image.reshape(1, -1)
 
