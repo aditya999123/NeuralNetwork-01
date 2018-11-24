@@ -11,7 +11,7 @@ class Animate:
 		self.t.start()
 
 	def animate(self, message):
-		for c in itertools.cycle(['|', '/', '-', '\\', '.']):
+		for c in itertools.cycle(['|', '/', '-', '\\']):
 			if self.run == False:
 				break
 			sys.stdout.write("\r%s %s"%(message, c))
