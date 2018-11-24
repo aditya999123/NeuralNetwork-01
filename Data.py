@@ -20,10 +20,10 @@ class Data:
 
 	def read(self):
 		if os.path.isfile("./data.pkl"):
-			with open('data.pkl', 'rb') as handle:
+			with open('data.pkl', 'rb') as file:
 				Data.animate.start("loading data...")
 
-				self.data = pickle.load(handle)
+				self.data = pickle.load(file)
 				Data.animate.end()
 			return
 
@@ -43,12 +43,14 @@ class Data:
 			file_paths = glob.glob(path)
 			print("digit: %d ... files: %d"%(num, len(file_paths)))
 
+			# x = np.zeros((500, 784))
 			x = np.zeros((len(file_paths), 784))
-			# x = np.zeros((2, 784))
 
+			# for ind, file in enumerate(file_paths[:500]):
 			for ind, file in enumerate(file_paths):
 				image = plt.imread(file_paths[0])
 				image = image.reshape(1, -1)
+				# image = image/255
 
 				x[ind:] = image
 
@@ -58,7 +60,7 @@ class Data:
 
 		Data.animate.start("writing into data.pkl...")
 		with open('data.pkl', 'wb') as file:
-			pickle.dump(self.data, file, protocol=pickle.HIGHEST_PROTOCOL)
+			pickle.dump(self.data, file, protocol = pickle.HIGHEST_PROTOCOL)
 
 		Data.animate.end()
 
